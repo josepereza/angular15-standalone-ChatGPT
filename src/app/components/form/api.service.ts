@@ -14,8 +14,9 @@ const headers = new HttpHeaders({
 export class ApiService {
   private httpClient = inject(HttpClient);
   private API = environment.apiURL;
-
+ spinner:boolean=false;
   generateResponse(prompt: string): Observable<any> {
+    this.spinner=true;
     const requestBody = {
       model: 'gpt-3.5-turbo',
       messages: [{ role: 'user', content: prompt }],
@@ -26,7 +27,7 @@ export class ApiService {
 
     return this.httpClient
       .post<any>(this.API, requestBody)
-      .pipe(tap((req:any)=>{console.log(req);return req}),
+      .pipe(tap((req:any)=>{console.log(req);this.spinner=false; return req}),
         map((response: ChatCompletion) => response.choices[0].message.content)
       );
   }

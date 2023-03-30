@@ -5,8 +5,8 @@
   <br><br>
   <button type="button" (click)="pregunta()">Enviar</button>
   </div>
-  
-  <div class="respuesta" [innerHTML]="chatCompletion$ | async | markdown">
+ 
+  <div class="respuesta" [innerHTML]="chatCompletion$ | async | markdown"  [ng2-loading]="showSpinner">
   </div>
 </div>
   
