@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="formulario">
+    <label for="name">Pregunta lo que quieras: </label>
+  <input id="name" type="text" [formControl]="name" placeholder="tu pregunta aqui">
+  <br><br>
+  <button type="button" (click)="pregunta()">Enviar</button>
+  </div>
+  
+  <div class="respuesta" [innerHTML]="chatCompletion$ | async | markdown">
+  </div>
+</div>
+  
+
